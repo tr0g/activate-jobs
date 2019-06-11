@@ -41,9 +41,9 @@ module Shifts
     config.encoding = "utf-8"
 
     # Configure sensitive parameters which will be filtered from the log file.
-    config.filter_parameters += [:password, :password_confirmation]
-
-    # config.action_mailer.raise_delivery_errors = true
+    #config.filter_parameters += [:password, :password_confirmation]
+    config.action_mailer.perform_deliveries = true
+    config.action_mailer.raise_delivery_errors = true
 
     # Enable escaping HTML in JSON.
     config.active_support.escape_html_entities_in_json = true
@@ -77,7 +77,7 @@ module Shifts
     # (by default production uses :info, the others :debug)
     # config.log_level = :debug
 
-    config.rubycas.cas_base_url = 'https://secure.its.yale.edu/cas/'
+    config.rubycas.cas_base_url = ''
 
     # Make Time.zone default to the specified zone, and make Active Record store time values
     # in the database in UTC, and return them converted to the specified local zone.

@@ -1,9 +1,11 @@
 source 'https://rubygems.org'
 
-ruby '2.1.2' # Version in .ruby-version must match
+ruby '2.3.1' # Version in .ruby-version must match
 
-gem 'rails', '3.2.21'
-gem 'mysql2'
+gem 'rails', '3.2.22'
+gem 'mysql2', '< 0.4'
+
+gem 'thin' 
 
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
@@ -18,7 +20,8 @@ gem 'icalendar'
 
 # authentication
 gem 'authlogic'
-gem 'scrypt' # dependency of authlogic, which isn't automatically resolved
+gem 'scrypt', '3.0.6' # dependency of authlogic, which isn't automatically resolved
+gem 'bcrypt-ruby', '3.0.0'
 
 # image upload
 gem 'paperclip'
@@ -55,6 +58,8 @@ gem 'activerecord-import'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
+  gem 'test-unit'
+  gem 'minitest'
   gem 'factory_girl_rails'
   gem 'annotate' # https://github.com/ctran/annotate_models add info headers
   gem 'fuubar'
@@ -75,8 +80,6 @@ end
 group :test do
   gem 'rspec'
   gem 'capybara'
-  gem 'capybara-webkit'
-  gem 'capybara-screenshot'
   gem 'selenium-webdriver'
   gem 'database_cleaner'
   gem 'codeclimate-test-reporter', require: false

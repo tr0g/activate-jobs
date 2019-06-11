@@ -80,9 +80,9 @@ end
 ################################################################################
 def app_config_gen
   ap = AppConfig.new
-  ap.auth_types = "CAS"
-  ap.footer = 'Seed Script by David Yao'
-  ap.mailer_address = "shifts.app@yale.edu"
+  ap.auth_types = "built-in"
+  ap.footer = 'Seed Script by Terry Roberts'
+  ap.mailer_address = "roberts.terry@gmail.com"
   ap.admin_email = Faker::Internet.email
   ap.use_ldap = false
   ap.calendar_feed_hash = SecureRandom.hex(32)
@@ -104,6 +104,7 @@ def user_gen
   user.login = login
   user.set_random_password
   user.departments = [@department]
+  puts "[Saving user: #{user.first_name}]"
   user.save!
   user.set_payrate(10+rand(10), @department)
   user
@@ -333,6 +334,7 @@ end
 # Then Department
 progress_bar_gen("Department [2/16]", 1) do 
   @department = Department.create!(name: "SDMP")
+  puts '[Department created: SMDP]'
   @department_config = @department.department_config
   # Setting end-time to 11pm
   @department_config.update_attributes(schedule_end: 1440)

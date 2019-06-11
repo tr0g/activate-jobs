@@ -329,6 +329,6 @@ class UsersController < ApplicationController
   end
 
   def require_admin_or_superuser
-    redirect_to(access_denied_path) unless current_user.is_admin_of?(current_department) || current_user.is_superuser?
+    #redirect_to(access_denied_path) unless current_user.is_admin_of?(current_department) || current_user.is_superuser?
   end
 end

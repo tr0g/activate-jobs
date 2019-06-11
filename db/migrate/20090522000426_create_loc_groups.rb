@@ -15,4 +15,3 @@ class CreateLocGroups < ActiveRecord::Migration
     drop_table :loc_groups
   end
 end
-

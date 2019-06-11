@@ -17,6 +17,7 @@ class UserSessionsController < ApplicationController
       flash[:notice] = "Successfully logged in."
       redirect_to root_url
     else
+      puts "\n[User '#{@user.first_name}' failed to login, with messages: #{@user_session.errors.full_messages}\n"
       render action: 'new'
     end
   end

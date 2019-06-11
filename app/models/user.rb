@@ -3,9 +3,9 @@ require 'rails_extensions'
 require 'memoist'
 
 class User < ActiveRecord::Base
-  acts_as_authentic do |options|
-    options.maintain_sessions false
-  end
+  acts_as_authentic
+
+  #has_secure_password
 
   has_and_belongs_to_many :roles
   has_and_belongs_to_many :subs_requested, class_name: 'SubRequest'
@@ -32,12 +32,10 @@ class User < ActiveRecord::Base
   scope :superusers, -> { where(superuser: true).order(:last_name) }
   delegate :default_department, to: 'user_config'
 
-
-
   validates_presence_of :first_name
   validates_presence_of :last_name
   validates_presence_of :login
-  #validates_presence_of :auth_type
+  validates_presence_of :auth_type
   validates_uniqueness_of :login
   validate :departments_not_empty
 
